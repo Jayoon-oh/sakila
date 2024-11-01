@@ -7,17 +7,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
+	<link rel="preconnect" href="https://fonts.googleapis.com">
     <meta charset="UTF-8">
     <title>Insert title here</title>
     <style>
         body {
-            background-color: white; /* 전체 배경을 흰색으로 설정 */
+           background-color: rgba(240, 240, 240, 0.8);
             height: 100vh; /* 전체 높이 */
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: "Raleway", sans-serif;
         }
+		
+
         .login-container {
             background: rgba(255, 255, 255, 0.9); /* 로그인 박스의 배경을 흰색으로 설정 */
             padding: 2rem;
@@ -29,25 +32,27 @@
         .form-label {
             font-weight: bold; /* 레이블 굵게 */
         }
+        
+        
     </style>
 </head>
 
 <body>
     <div class="login-container">
         <section class="bg-light p-3 p-md-4 p-xl-5 text-center">
-            <h1>staff login <span>${msg}</span></h1>
+            <h1>로그인 <span>${msg}</span></h1>
         </section>
 
         <form id="form" action="${pageContext.request.contextPath}/off/login" method="post">
             <div class="mb-3">
-                <label for="staffId" class="form-label">staffId:</label>
+                <label for="staffId" class="form-label">ID:</label>
                 <input id="staffId" name="staffId" type="text" class="form-control"> 
             </div>
             <div class="mb-3">
-                <label for="password" class="form-label">password:</label>
+                <label for="password" class="form-label">Password:</label>
                 <input id="password" name="password" type="password" class="form-control">
             </div>
-            <button id="btn" type="button" class="btn btn-primary w-100">로그인</button> <!-- 버튼 너비 100% -->
+            <button id="btn" type="button" class="btn btn-primary w-100">Login</button> <!-- 버튼 너비 100% -->
         </form>
     </div>
 
