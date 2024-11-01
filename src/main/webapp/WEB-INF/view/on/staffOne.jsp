@@ -20,7 +20,8 @@
 		
 		<div class="col-sm-10">
 			<!-- main content -->
-			<h1>main title</h1>
+			<h1>staffOne</h1>
+			${loginStaff.username}
 		</div>
 	</div>
 </body>

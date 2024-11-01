@@ -10,6 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body class="container">
-		<h1>staff login <span>${msg}</span></h1>
+		<div class="row">
+			<div></div>
+			<div></div>
+		</div>
 </body>
 </html>
