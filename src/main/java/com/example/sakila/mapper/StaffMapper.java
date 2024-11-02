@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.example.sakila.vo.Staff;
 
-@Mapper 
+@Mapper //xml 쿼리를 실행하기 위해 만든 클래스.
 public interface StaffMapper {
 	// /staffOne.jsp 
 	Map<String, Object> selectStaffOne(int StaffId);

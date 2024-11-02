@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class StaffController {
 	@Autowired StaffMapper staffMapper;
-	@GetMapping("/on/staffOne")
+	@GetMapping("/on/staffOne") //데이터베이스에서 받아서, Return으로 jsp파일 열기.
 	public String staffOne(HttpSession session, Model model) {
 		int staffId = ((Staff)(session.getAttribute("loginStaff"))).getStaffId();
 		Map<String, Object> staff = staffMapper.selectStaffOne(staffId);
@@ -28,3 +28,5 @@ public class StaffController {
 	}
 	
 }
+
+//데이터베이스 (mapper) 조회 및 , 컨트롤러 수행 역할 후 jsp 파일 열기.

@@ -16,3 +16,5 @@ public class Hello {
 		return "hello";
 	}
 }
+
+// 컨트롤러 클래스. /hello 들어오는 Get요청 처리. "hello" 뷰 반환.

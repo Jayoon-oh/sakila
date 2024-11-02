@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li class="list-group-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/on/staffOne">
+                <a class="nav-link" href="${pageContext.request.contextPath}/on/staffOne"> <!-- 컨트롤러 호출 메서든 -->
                     <i class="bi bi-person-circle"></i> ${loginStaff.username}님
                 </a>
             </li>
