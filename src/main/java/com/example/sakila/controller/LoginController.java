@@ -18,7 +18,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j	// 롬복 어노테이션. 로그 기록하기 위해 log 변수 자동생성.
 @Controller
 public class LoginController {
-	
 	@Autowired
 	private StaffMapper staffMapper; //StaffMapper 주입받음.
 	

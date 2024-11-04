@@ -40,14 +40,14 @@
                 <strong>STAFF 관리</strong>
             </li>
             <li class="list-group-item">
-                <a class="nav-link" href="">
-                    <i class="bi bi-list-check"></i> 스탭 리스트
-                </a>
+             <a class="nav-link" href="${pageContext.request.contextPath}/on/staffList">
+                        <i class="bi bi-list-check"></i> 스탭 리스트
+                    </a>
             </li>
-            <li class="list-group-item">
-                <a class="nav-link" href="">
-                    <i class="bi bi-person-plus"></i> 스탭 추가
-                </a>
+              <li class="list-group-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/on/addStaff">
+                        <i class="bi bi-person-plus"></i> 스탭 추가
+                    </a>
             </li>
             <li class="list-group-item bg-light">
                 <strong>고객 관리</strong>
