@@ -17,7 +17,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: "Raleway", sans-serif;
+           	font-family: "Noto Sans KR", sans-serif;
         }
 		
 
