@@ -31,7 +31,7 @@
 					<td>username</td>
 					<td>lastUpdate</td>
 					<td>active</td>
-					<td>비활성화</td>
+					<td>활성/비활성화</td>
 				</tr>
 				<c:forEach var="s" items="${staffList}">
 					<tr>
@@ -45,10 +45,18 @@
 						<td>${s.lastUpdate}</td>
 						<td>${s.active}</td> <!-- 삭제 불가, active값만 수정 가능. -->
 						<td>
-						<a href="" class="btn btn-danger">
-							<c:if test="${s.active==1}">비활성화</c:if>
-							<c:if test="${s.active==0}">활성화</c:if>
-						</a>
+						<c:choose>
+					        <c:when test="${s.active == 1}">
+					            <a href="${pageContext.request.contextPath}/on/modifyStaffActive?staffId=${s.staffId}&active=${s.active}" class="btn btn-danger">
+					                사용금지로 변경
+					            </a>
+					        </c:when>
+					        <c:when test="${s.active == 2}">
+					            <a href="${pageContext.request.contextPath}/on/modifyStaffActive?staffId=${s.staffId}&active=${s.active}" class="btn btn-primary">
+					                사용으로 변경
+					            </a>
+					         </c:when>
+					    </c:choose>
 						</td>
 					</tr>
 				</c:forEach>

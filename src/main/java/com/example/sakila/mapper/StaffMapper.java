@@ -9,6 +9,11 @@ import com.example.sakila.vo.Staff;
 
 @Mapper //xml 쿼리를 실행하기 위해 만든 클래스.
 public interface StaffMapper {
+	// 수정하는거.
+	int updateStaff(Staff staff); // 업데이터문 하나로 모든 컬럼을 개별수정 가능하도록. (myBatis 지원기능)
+	
+	int selectStaffCount();
+	
 	List<Staff> selectStaffList(Map<String,Object> map);
 	
 	int insertStaff(Staff staff);

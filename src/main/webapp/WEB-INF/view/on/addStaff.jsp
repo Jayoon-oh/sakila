@@ -159,7 +159,7 @@
 			alert('username를 입력하세요');
 		} else{
 			console.log('submit....');
-			// $('#addForm').submit();
+			$('#addForm').submit();
 		}
 	});
 	

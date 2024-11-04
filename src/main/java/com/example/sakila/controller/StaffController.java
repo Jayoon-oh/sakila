@@ -28,6 +28,18 @@ public class StaffController {
 	@Autowired StaffMapper staffMapper;
 	@Autowired StoreMapper storeMapper;
 	@Autowired AddressMapper addressMapper;
+	// active 수정
+	@GetMapping("/on/modifyStaffActive")
+	public String modifyStaffActive(Staff staff) {
+		if (staff.getActive() == 1) {
+			staff.setActive(2);
+		} else {
+			staff.setActive(1);
+		}
+		int row = staffMapper.updateStaff(staff); // 입력값에 상관없이, 해당열만 호출하면 전부 수정 가능. (myBatis 의 강력한 성격). why? 어떤 컬럼값을 수정하든 mapper 메서드는 하나다!
+		return "redirect:/on/staffList";
+	}
+	
 	
 	// 1) leftMunu <a>태그 통해서 넘어오는 방법, 2) addStaff.jsp 통해서 주소검색을 통해 넘어오는 방법. 차이점 : 첫번째, leftMenu 는 매개값으로 아무것도 안넘김, 2번째는 searchAddress 값이 넘어옴. 
 	@GetMapping("/on/addStaff")
@@ -70,11 +82,20 @@ public class StaffController {
 		map.put("beginRow", beginRow);
 		map.put("rowPerPage", rowPerPage);
 		log.debug(map.toString());
-				
-		List<Staff> staffList = staffMapper.selectStaffList(map);
 		
+		List<Staff> staffList = staffMapper.selectStaffList(map);
+		log.debug(staffList.toString());
+		
+		int count = staffMapper.selectStaffCount();
+		int lastPage = count / rowPerPage;
+		if(count % rowPerPage != 0) {
+			lastPage += 1;
+		}
 		
 		model.addAttribute("staffList", staffList);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("lastPage", lastPage);
+		
 		return "on/staffList";
 	}
 	
