@@ -19,7 +19,7 @@ public interface StaffMapper {
 	int insertStaff(Staff staff);
 	
 	// /on/staffOne.jsp 
-	Map<String, Object> selectStaffOne(int StaffId);
+	Map<String, Object> selectStaffOne(int staffId);
 	
 	// /off/login 메소드
 	Staff login(Staff staff);

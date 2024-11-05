@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.sakila.mapper.StaffMapper;
+import com.example.sakila.service.StaffService;
 import com.example.sakila.vo.Staff;
 
 import jakarta.servlet.http.HttpSession;
@@ -18,8 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j	// 롬복 어노테이션. 로그 기록하기 위해 log 변수 자동생성.
 @Controller
 public class LoginController {
-	@Autowired
-	private StaffMapper staffMapper; //StaffMapper 주입받음.
+	@Autowired StaffService staffService;
 	
 	// 로그아웃 매핑
 	@GetMapping("/on/logout")
@@ -48,7 +48,7 @@ public class LoginController {
 			paramStaff.setStaffId(staffId); // 파라미터를 객체에 넣음. <키.몸무게>
 			paramStaff.setPassword(password); 
 			
-			Staff loginStaff = staffMapper.login(paramStaff); //폼에서. <건강진단서>
+			Staff loginStaff = staffService.login(paramStaff); //폼에서. <건강진단서>
 			if(loginStaff == null) {
 				log.debug("로그인 실패");
 				model.addAttribute("msg", "로그인실패");

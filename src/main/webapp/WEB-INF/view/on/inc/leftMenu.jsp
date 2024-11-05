@@ -50,16 +50,16 @@
                     </a>
             </li>
             <li class="list-group-item bg-light">
-                <strong>고객 관리</strong>
+                <strong>배우 관리</strong>
             </li>
             <li class="list-group-item">
-                <a class="nav-link" href="">
-                    <i class="bi bi-person-lines-fill"></i> 고객 리스트
+                <a class="nav-link" href="${pageContext.request.contextPath}/on/actorList">
+                    <i class="bi bi-person-lines-fill"></i> 배우 리스트
                 </a>
             </li>
             <li class="list-group-item">
-                <a class="nav-link" href="">
-                    <i class="bi bi-person-plus-fill"></i> 고객 추가
+                <a class="nav-link" href="${pageContext.request.contextPath}/on/addActor">
+                    <i class="bi bi-person-plus-fill"></i> 배우 추가
                 </a>
             </li>
         </ul>
