@@ -2,9 +2,12 @@ package com.example.sakila.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
+import org.apache.catalina.util.ParameterMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +27,23 @@ import lombok.extern.slf4j.Slf4j;
 public class ActorService {
 	@Autowired ActorMapper actorMapper;
 	@Autowired ActorFileMapper actorFileMapper;
+	
+	public List<Actor> getActorList(int currentPage, int rowPerPage, String searchWord) {
+		Map<String, Object> paramMap = new HashMap<>();
+		int beginRow = (currentPage - 1) * rowPerPage;
+		paramMap.put("beginRow", beginRow);
+		paramMap.put("rowPerPage", rowPerPage);
+		paramMap.put("searchWord", searchWord);
+		
+		return actorMapper.selectActorList(paramMap);
+		}
+	
+	public int getTotalCount(String searchWord) {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("searchWord", searchWord);
+		
+		return actorMapper.selectTotalCountBySearch(paramMap);
+	}
 	
 	public void addActor(ActorForm actorForm, String path) {
 		 Actor actor = new Actor();
