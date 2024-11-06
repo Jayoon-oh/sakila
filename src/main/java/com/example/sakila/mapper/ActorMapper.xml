@@ -1,7 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.sakila.mapper.ActorMapper">
-	<!-- 전체 레코드 수 반환하는 SQL -->
+	<!-- /on/filmOne-->
+	<select id="selectActorListByFilm"
+			parameterType="int"
+			resultType="com.example.sakila.vo.Actor">
+			
+			SELECT 
+				a.actor_id actorId
+				, a.first_name firstName
+				, a.last_name lastName
+			FROM film_actor fa INNER JOIN actor a
+			ON fa.actor_id = a.actor_id
+			WHERE fa.actor_id = #{actorId}
+	
+	</select>
+	
+	<select id="selectActorFileListByActor"
+				parameterType="int"
+				resultType="com.example.sakila.vo.ActorFile">
+		SELECT 
+			actor_file_id actorFileId 
+			, actor_id actorId
+			, originname
+			, filename
+			, ext
+			, type
+			, size
+			, createdate
+		FROM file_actor
+		WHERE actor_id = #{actorId};
+	
+	</select> <!-- 두번째 쿼리 -->
+
+	<select id="selectActorOne"
+			parameterType = "int"
+			resultType = "com.example.sakila.vo.Actor">
+		SELECT
+			actor_id actorId
+			, first_name firstName
+			, last_name lastName
+			, last_update lastUpdate
+		FROM actor
+		WHERE actor_Id = #{actorId}
+	</select>
+
+	<!-- 전체 레코드 수 반환하는 SQL / 페이징 -->
  	<select id="selectTotalCount" resultType="int">
         SELECT COUNT(*) FROM actor
     </select>

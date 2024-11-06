@@ -9,9 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.sakila.service.ActorFileService;
 import com.example.sakila.service.ActorService;
+import com.example.sakila.service.FilmService;
 import com.example.sakila.vo.Actor;
+import com.example.sakila.vo.ActorFile;
 import com.example.sakila.vo.ActorForm;
+import com.example.sakila.vo.Film;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +24,26 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class ActorController {
 	@Autowired ActorService actorService;
+	@Autowired ActorFileService actorFileService;
+	@Autowired FilmService filmService;
 	
+	@GetMapping("/on/actorOne")
+	public String actorOne(Model model
+							, @RequestParam int actorId) {
+		Actor actor = actorService.getActorOne(actorId);
+		List<ActorFile> actorFileList = actorFileService.getActorFileListByActor(actorId);
+		List<Film> filmList = filmService.getFilmTitleListByActor(actorId);
+		log.debug(actor.toString());
+		log.debug(actorFileList.toString());
+		log.debug(filmList.toString());
+		
+		model.addAttribute("actor",actor);
+		model.addAttribute("actorFileList",actorFileList);
+		model.addAttribute("filmList",filmList);
+		
+		
+		return "on/actorOne";
+	}
 	
 	@GetMapping("/on/actorList")
 	public String actorList(Model model
@@ -29,14 +52,15 @@ public class ActorController {
 							, @RequestParam(required = false) String searchWord) {
 		log.debug("searchWord: "+ searchWord);
 		
-		// 전체 데이터 수 계산
-		int totalCount = actorService.getTotalCount(searchWord);
-		
-		// 마지막 페이지 계산
-		int lastPage = totalCount / rowPerPage;
-		if(totalCount % rowPerPage > 0) {
-			lastPage++; // 나머지 있으면 페이지 수 하나 더 추가.
-		}
+				// 전체 데이터 수 계산
+				int totalCount = actorService.getTotalCount(searchWord);
+				
+				// 마지막 페이지 계산
+				int lastPage = totalCount / rowPerPage;
+				if(totalCount % rowPerPage > 0) {
+					lastPage++; // 나머지 있으면 페이지 수 하나 더 추가.
+				}
+				
 		// int lastPage = actorService.getTotalCount(rowPerPage, searchWord);
 		List<Actor> actorList = actorService.getActorList(currentPage, rowPerPage, searchWord);
 		model.addAttribute("actorList", actorList);

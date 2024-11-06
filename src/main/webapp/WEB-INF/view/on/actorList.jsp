@@ -43,7 +43,7 @@
 			</form>
 			
 			<!-- 페이징 작업 추가 -->
-			 <div class="pagination">
+			<div class="pagination">
 		        <c:if test="${currentPage > 1}">
 		            <a href="${pageContext.request.contextPath}/on/actorList?currentPage=${currentPage - 1}&rowPerPage=${rowPerPage}&searchWord=${param.searchWord}">이전</a>
 		        </c:if>

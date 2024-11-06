@@ -1,13 +1,11 @@
 package com.example.sakila.service;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import org.apache.catalina.util.ParameterMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +26,17 @@ public class ActorService {
 	@Autowired ActorMapper actorMapper;
 	@Autowired ActorFileMapper actorFileMapper;
 	
+	// /on/filmOne
+	public List<Actor> getActorListByFilm(int filmId) {
+		return actorMapper.selectActorListByFilm(filmId);
+	}
+	
+	// /on/actorOne
+	public Actor getActorOne(int actorId) {
+		return actorMapper.selectActorOne(actorId);
+	}
+	
+	
 	public List<Actor> getActorList(int currentPage, int rowPerPage, String searchWord) {
 		Map<String, Object> paramMap = new HashMap<>();
 		int beginRow = (currentPage - 1) * rowPerPage;
@@ -36,14 +45,17 @@ public class ActorService {
 		paramMap.put("searchWord", searchWord);
 		
 		return actorMapper.selectActorList(paramMap);
-		}
+	}
 	
-	public int getTotalCount(String searchWord) {
+		// 페이징 위한 전체 수.
+		public int getTotalCount(String searchWord) {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("searchWord", searchWord);
 		
 		return actorMapper.selectTotalCountBySearch(paramMap);
 	}
+
+	
 	
 	public void addActor(ActorForm actorForm, String path) {
 		 Actor actor = new Actor();
@@ -54,8 +66,6 @@ public class ActorService {
 		 // mybatis selectKey의 값
 		 int actorId = actor.getActorId();
 		 
-	
-
 		 if(row1 == 1 && actorForm.getActorFile() != null) {
 			 // 파일 입력, ActorFile 입력
 			 List<MultipartFile> list = actorForm.getActorFile();
@@ -76,7 +86,6 @@ public class ActorService {
 				 int row2 = actorFileMapper.insertActorFile(actorFile);
 				 if(row2 == 1) {
 					 // 물리적 파일 저장
-					
 					 try {
 						mf.transferTo(new File(path + filename +"."+ ext));
 					 } catch (Exception e) {
