@@ -4,18 +4,18 @@ import lombok.Data;
 
 @Data
 public class Film {
- private int filmId;
- private String title;
- private String description;
- private String releaseYear;
- private int languageId;
- private int originalLanguageId;
+ private int filmId;// PK
+ private String title; // 초록키
+ private String description; //	NULL
+ private Integer releaseYear; // NULL
+ private int languageId; // FK
+ private Integer originalLanguageId; // FK
  private int rentalDuration;
  private String rentalRate;
- private int length;
- private String replacementCost;
+ private int length; // 기본값 NULL
+ private double replacementCost;
  private String rating;
- private String specialFeatures;
+ private String specialFeatures; // 기본값 NULL
  private String lastUpdate;
  
  

@@ -19,11 +19,59 @@
 		</div>
 		
 		<div class="col-sm-10">
-			<!-- main content -->
-			<h1>FILM ONE</h1>
-			<div>
-				${film}
-			</div>
+    <h2>영화 정보</h2>
+    <table class="table table-striped table-bordered">
+        <tbody>
+        <div>
+        	<a href="영화수정"></a>
+        </div>
+            <tr>
+                <td>제목</td>
+                <td>${film.title}</td>
+            </tr>
+            <tr>
+                <td>줄거리</td>
+                <td>${film.description}</td>
+            </tr>
+            <tr>
+                <td>출시 연도</td>
+                <td>${film.releaseYear}</td>
+            </tr>
+            <tr>
+                <td>길이</td>
+                <td>${film.length} 분</td>
+            </tr>
+            <tr>
+                <td>상영등급</td>
+                <td>${film.rating}</td>
+            </tr>
+            <tr>
+                <td>언어</td>
+                <td>${film.language}</td>
+            </tr>
+            <tr>
+                <td>대여비</td>
+                <td>${film.rentalRate} 달러</td>
+            </tr>
+            <tr>
+                <td>대여기간</td>
+                <td>${film.rentalDuration} 일</td>
+            </tr>
+            <tr>
+                <td>특별 기능</td>
+                <td>${film.specialFeatures}</td>
+            </tr>
+            <tr>
+                <td>마지막 수정일</td>
+                <td>${film.lastUpdate}</td>
+            </tr>
+            <tr>
+                <td>대체비용</td>
+                <td>${film.replacementCost} 달러</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 			
 			<div>
 				<h2>작품에 출연한 배우들</h2>

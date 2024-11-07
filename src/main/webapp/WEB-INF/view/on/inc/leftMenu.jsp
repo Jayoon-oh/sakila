@@ -2,6 +2,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+
 <div class="container mt-3">
     <div class="card">
         <div class="card-header text-center">
@@ -50,11 +51,36 @@
                     </a>
             </li>
             <li class="list-group-item bg-light">
+                <strong>영화 관리</strong>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="">
+                    <i class="bi bi-camera"></i> 영화 리스트
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/on/addFilm">
+                    <i class="bi bi-film"></i> 영화 추가
+                </a>
+            <li class="list-group-item bg-light">
+                <strong>고객 관리</strong>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/on/actorList">
+                    <i class="bi bi-person-lines-fill"></i> 고객 리스트
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/on/addActor">
+                    <i class="bi bi-person-plus-fill"></i> 고객 추가
+                </a>
+            </li>
+            <li class="list-group-item bg-light">
                 <strong>배우 관리</strong>
             </li>
             <li class="list-group-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/on/actorList">
-                    <i class="bi bi-person-lines-fill"></i> 배우 리스트
+                    <i class="bi bi-person-fill"></i> 배우 리스트
                 </a>
             </li>
             <li class="list-group-item">

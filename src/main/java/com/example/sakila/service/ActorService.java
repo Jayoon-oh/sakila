@@ -83,6 +83,7 @@ public class ActorService {
 				 actorFile.setOriginname(originname);
 				 actorFile.setExt(ext);
 				 
+				 
 				 int row2 = actorFileMapper.insertActorFile(actorFile);
 				 if(row2 == 1) {
 					 // 물리적 파일 저장

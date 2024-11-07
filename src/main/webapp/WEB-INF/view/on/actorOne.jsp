@@ -43,6 +43,10 @@
 			
 			
 			
+			<div>
+				<a href="${pageContext.request.contextPath}/on/modifyActor">
+					actor 수정 [과제: 입력폼, 액션, 서비스, 매퍼]
+			</div>
 			
 			
 			<!-- Actor File -->
@@ -66,7 +70,10 @@
 			</c:forEach>				
 			</table>
 			<div>
-				<a href="">이미지 파일 추가</a> <!-- 따로 추가할 수 있는, home 으로 넘어감. -->
+				<a href="${pageContext.request.contextPath}/on/addActorFile?actorId=${actorId}"
+				class = "btn btn-success">
+				이미지 파일 추가
+				</a> <!-- 따로 추가할 수 있는, home 으로 넘어감. -->
 			</div>
 			
 			

@@ -22,15 +22,15 @@
 			
 			<table class="table table-striped">
 				<tr>
-					<td>staffId</td>
-					<td>firstName</td>
-					<td>lastName</td>
-					<td>addressId</td>
-					<td>email</td>
-					<td>storeId</td>
-					<td>username</td>
-					<td>lastUpdate</td>
-					<td>active</td>
+					<td>스태프 ID</td>
+					<td>이름</td>
+					<td>성</td>
+					<td>주소 ID</td>
+					<td>이메일</td>
+					<td>가게 ID</td>
+					<td>사용자이름</td>
+					<td>최근 업데이트</td>
+					<td>활성화 상태</td>
 					<td>활성/비활성화</td>
 				</tr>
 				<c:forEach var="s" items="${staffList}">
