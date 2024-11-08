@@ -17,30 +17,28 @@
 			<!-- leftMenu.jsp include -->
 			<c:import url="/WEB-INF/view/on/inc/leftMenu.jsp"></c:import>
 		</div>
-			
-			<!--
-			
-			1) actor 상세
-			1-1) actor 수정 - /on/modifyActor
+		
+		<!-- ● 
+			● 1) actor 상세
+			● 1-1) actor 수정 - /on/modifyActor
 			1-2) actor 삭제 - /on/removeActor (actor_file삭제 + film_actor삭제 + actor삭제)
 			
-			2) actor_file 리스트
-			2-1) actor_file 추가 
-			2-2) actor_file 삭제 /on/removeActorFile
+			● 2) actor_file 리스트
+			● 2-1) actor_file 추가 
+			● 2-2) actor_file 삭제 /on/removeActorFile
 						
-			3) film_actor 리스트
-			3-1) film_actor 추가 /on/addFilmByActor -> 필름 검색 후 선택
-			3-2) film_actor 삭제 /on/removeFilmActor  
-			
-			-->
+			● 3) film_actor 리스트
+			● 3-1) film_actor 추가 /on/addFilmByActor -> 필름 검색 후 선택
+			● 3-2) film_actor 삭제 /on/removeFilmActor 
+
+		 -->
 		
-	
 		<div class="col-sm-10">
 			<!-- main content -->
 			<h1>ACTOR ONE</h1>
 			<!-- ACTOR -->
 			<h2>&#128526; ACTOR</h2>
-			<table class="table">
+			<table class="table table-striped table-hover">
 				<tr>
 					<td>actorId</td>
 					<td>${actor.actorId}</td>
@@ -59,11 +57,14 @@
 				</tr>
 			</table>
 			<div>
-				<a href="${pageContext.request.contextPath}/on/modifyActor">
-					actor 수정[과제 : 입력폼, 액션, 서비스, 맵퍼,...]
-				</a>
+			    <a class="btn btn-primary" href="${pageContext.request.contextPath}/on/modifyActor?actorId=${actor.actorId}">
+			        actor 수정
+			    </a>
+			    &nbsp;
+			    <a class="btn btn-danger" href="${pageContext.request.contextPath}/on/removeActor?actorId=${actor.actorId}">
+			        actor 삭제
+			    </a>
 			</div>
-			
 			<br>
 			<!-- ACTOR FILE -->
 			<h2>&#128526; ACTOR FILE</h2>
@@ -92,10 +93,10 @@
 				</c:forEach>
 			</table>
 			<div>
-					<a href="${pageContext.request.contextPath}/on/addActorFile?actorId=${actor.actorId}" 
-					class="btn btn-success">
-						이미지파일 추가
-					</a>
+				<a href="${pageContext.request.contextPath}/on/addActorFile?actorId=${actor.actorId}" 
+				class="btn btn-success">
+					이미지파일 추가
+				</a>
 			</div>
 			
 			<br>
@@ -104,7 +105,7 @@
 				<h2>&#128526; 출연 작품</h2>
 				
 				<div>
-					<!-- 출연작품 추가. -->
+					<!-- 출연작 추가 -->
 					<form id="formSearchFilm" method="get" 
 						action="${pageContext.request.contextPath}/on/actorOne"><!-- 영화검색 -->
 						<!-- film 검색시 actorId같이 전송 -->
@@ -125,22 +126,33 @@
 					</form>
 				</div>
 				
+				<br>
+				
+				<!-- 영화 리스트 -->
 				<c:forEach var="f" items="${filmList}">
-					<a href="${pageContext.request.contextPath}/on/filmOne?filmId=${f.filmId}">
-						${f.title}
-					</a>&nbsp;
+						<a href="${pageContext.request.contextPath}/on/filmOne?filmId=${f.filmId}"
+							 class="btn btn-info">
+							${f.title}
+						</a>
+						&nbsp;
+						<a href="${pageContext.request.contextPath}/on/removeFilmActor?filmId=${f.filmId}&actorId=${actor.actorId}" 
+							class="btn btn-danger">flim_actor에서 삭제</a>
+						</div>
+						</div>
 				</c:forEach>
 			</div>
 		</div>
 	</div>
 </body>
 <script>
-	// film title검색하는 버튼
+	// film title검색하는 버턴
 	$('#btnSearchFilm').click(function(){
+		// 유효성 검사 코드 추가
 		$('#formSearchFilm').submit();
 	});
-	// 출연작(film) 추가하는 버튼
-	$('#btnAddFilm').click(function(){ 
+	// 출연작(film) 추가하는 버턴
+	$('#btnAddFilm').click(function(){
+		// 유효성 검사 코드 추가
 		$('#formAddFilm').submit();
 	});
 </script>

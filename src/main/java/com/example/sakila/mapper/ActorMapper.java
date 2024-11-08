@@ -10,7 +10,10 @@ import com.example.sakila.vo.ActorFile;
 
 @Mapper
 public interface ActorMapper {
-
+	int deleteActor(int actorId);
+	
+	int updateActor(Actor actor);
+	
 	// /on/removeActorFile : Service안에서 필요. -> 이거 뭐냐?
 	ActorFile selectActorFileOne(int actorFileId);
 	

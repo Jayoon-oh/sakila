@@ -1,5 +1,6 @@
 package com.example.sakila.controller;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,14 @@ public class ActorFileController {
 		}
 
 		String path = session.getServletContext().getRealPath("/upload/");
+		System.out.println(path + "<---path");
+		
+		// 디렉토리 존재 여부 확인 및 생성.
+		 File uploadDir = new File(path);
+		    if (!uploadDir.exists()) {
+		        uploadDir.mkdirs(); // 디렉토리가 없으면 생성
+		    }
+
 		actorFileService.addActorFile(actorForm, path);
 		return "redirect:/on/actorOne?actorId="+actorForm.getActorId();
 	}

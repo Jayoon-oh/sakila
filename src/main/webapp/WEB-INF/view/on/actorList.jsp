@@ -39,7 +39,7 @@
 			</table>
 			<form id="formSearch" action="${pageContext.request.contextPath}/on/actorList" method="get">
 				<input type="text" name="searchWord" id="searchWord">
-				<button id="btnSearch">이름검색</button>
+				<button id="btnSearch" class="btn btn-primary">이름검색</button>
 			</form>
 			
 			<!-- 페이징 작업 추가 -->

@@ -13,6 +13,9 @@ import com.example.sakila.mapper.ActorFileMapper;
 import com.example.sakila.vo.ActorFile;
 import com.example.sakila.vo.ActorForm;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 @Transactional
 public class ActorFileService {
@@ -52,7 +55,7 @@ public class ActorFileService {
 				 actorFile.setExt(ext);
 				 
 				 int row2 = actorFileMapper.insertActorFile(actorFile);
-				 
+				 log.debug(actorFile + "<-- actorFIle.");
 				   // null 값 디버깅 해보기.
 				 
 				 if(row2 == 1) {
