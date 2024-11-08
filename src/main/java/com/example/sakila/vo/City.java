@@ -7,5 +7,5 @@ public class City {
  private int cityId;
  private String city;
  private int countryId;
- private String timeStamp;
+ private String lastUpdate;
 }

@@ -6,5 +6,5 @@ import lombok.Data;
 public class FilmActor {
  private int actorId;
  private int filmId;
- private String lasteUpdate;
+ private String lastUpdate;
 }

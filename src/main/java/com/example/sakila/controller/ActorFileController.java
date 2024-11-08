@@ -18,6 +18,15 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class ActorFileController {
 	@Autowired ActorFileService actorFileService;
+
+	@GetMapping("/on/removeActorFile")
+	public String removeActorFile(HttpSession session
+								, @RequestParam int actorFileId
+								, @RequestParam int actorId) {
+		String path = session.getServletContext().getRealPath("/upload/");
+		actorFileService.removeActorFile(actorFileId, path);
+		return "redirect:/on/actorOne?actorId="+actorId;
+	}
 	
 	@PostMapping("/on/addActorFile")
 	public String addActorFile(HttpSession session
@@ -31,18 +40,18 @@ public class ActorFileController {
 				return "on/addActorFile";
 			}
 		}
-		
+
 		String path = session.getServletContext().getRealPath("/upload/");
 		actorFileService.addActorFile(actorForm, path);
 		return "redirect:/on/actorOne?actorId="+actorForm.getActorId();
 	}
-	
-	
+
+
 	@GetMapping("/on/addActorFile")
 	public String addActorFile(Model model, @RequestParam int actorId) {
 		model.addAttribute("actorId", actorId);
 		return "on/addActorFile";
 	}
-	
-	
+
+
 }

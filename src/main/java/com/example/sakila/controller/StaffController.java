@@ -64,6 +64,7 @@ public class StaffController {
 		return "on/addStaff";
 	}	// 지점 선택-> 지점리스트 넘겨줘야 함. 
 	
+
 	@PostMapping("/on/addStaff")
 	public String addStaff(Staff staff) { // -> 커멘드 객체라고 불림. 1) 커멘드객체.set(request.getParameter())를 실행. 2) 매개변수 이름과 comment 이름이 같을때 set을 실행함. 
 		// insert 호출.

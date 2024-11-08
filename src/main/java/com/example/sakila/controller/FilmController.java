@@ -26,10 +26,14 @@ public class FilmController {
 	@Autowired ActorService actorService;
 	@Autowired LanguageService languageService;
 	
+	
 	@PostMapping("/on/addFilm")
 	public String addFilm(FilmForm filmForm) {
-		log.debug(null);
-		// filmService :FilmForm -> null
+		log.debug(filmForm.toString());
+		
+		// filmService : FilmForm -> Film
+		filmService.addFilm(filmForm);
+		
 		return "redirect:/on/filmList";
 	}
 	
@@ -37,11 +41,10 @@ public class FilmController {
 	public String addFilm(Model model) {
 		// languageList
 		List<Language> languageList = languageService.getLanguageList();
-		log.debug(languageList.toString()); //디버깅.
+		log.debug(languageList.toString());
 		model.addAttribute("languageList", languageList);
 		return "on/addFilm";
 	}
-	
 	
 	@GetMapping("/on/filmOne")
 	public String filmOne(Model model

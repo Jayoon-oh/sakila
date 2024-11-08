@@ -4,19 +4,17 @@ import lombok.Data;
 
 @Data
 public class Film {
- private int filmId;// PK
- private String title; // 초록키
- private String description; //	NULL
- private Integer releaseYear; // NULL
- private int languageId; // FK
- private Integer originalLanguageId; // FK
- private int rentalDuration;
- private String rentalRate;
- private int length; // 기본값 NULL
- private double replacementCost;
- private String rating;
- private String specialFeatures; // 기본값 NULL
- private String lastUpdate;
- 
- 
+	private int filmId; // PK
+	private String title; // 초록키
+	private String description; // NULL
+	private Integer releaseYear; // NULL
+	private int languageId; // FK
+	private Integer originalLanguageId; // FK 기본값 NULL
+	private int rentalDuration;
+	private double rentalRate;
+	private Integer length; // 기본값 NULL
+	private double replacementCost;
+	private String rating;
+	private String specialFeatures; // 기본값 NULL
+	private String lastUpdate;
 }

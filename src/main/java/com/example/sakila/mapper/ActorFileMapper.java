@@ -8,8 +8,14 @@ import com.example.sakila.vo.ActorFile;
 
 @Mapper
 public interface ActorFileMapper {
-	// /on/actor
-	List<ActorFile> selectActorFileListByActor(int actorId);
+	// [Service] /on/removeActorFile 
+	ActorFile selectActorFileOne(int actorFileId);
 	
+	// /on/removeActorFile
+	int deleteActorFile(int actorFileId);
+	
+	// /on/actorOne
+	List<ActorFile> selectActorFileListByActor(int actorId);
+
 	int insertActorFile(ActorFile actorFile);
 }

@@ -6,9 +6,13 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.sakila.vo.Actor;
+import com.example.sakila.vo.ActorFile;
 
 @Mapper
 public interface ActorMapper {
+
+	// /on/removeActorFile : Service안에서 필요. -> 이거 뭐냐?
+	ActorFile selectActorFileOne(int actorFileId);
 	
 	// /on/filmOne
 	List<Actor> selectActorListByFilm(int filmId);
