@@ -17,84 +17,88 @@
 			<!-- leftMenu.jsp include -->
 			<c:import url="/WEB-INF/view/on/inc/leftMenu.jsp"></c:import>
 		</div>
-		<!--  
-				1) film 상세
-				1-1) film 수정 - /on/modifyFilm
-				1-2) film 삭제 - /on/removeFilm (film_category삭제 + film_actor삭제 + film삭제)
-				
-				2) film_category 리스트
-				2-1) film_category 추가 /on/addFilmCategory -> 카테고리 전체 목록에서 선택
-				2-2) film_category 삭제 /on/removeFilmCategory
-							
-				3) film_actor 리스트
-				3-1) film_actor 추가 /on/addActorByFilm -> 액터 검색 후 선택
-				3-2) film_actor 삭제 /on/removeFileActor
-				
-		 -->
-	<div class="col-sm-10">
-    <h2>영화 정보</h2>
-    <table class="table table-striped table-bordered">
-        <tbody>
-        <div>
-        	<a href="영화수정"></a>
-        	<a href="영화삭제"></a>
-        </div>
-            <tr>
-                <td>제목</td>
-                <td>${film.title}</td>
-            </tr>
-            <tr>
-                <td>줄거리</td>
-                <td>${film.description}</td>
-            </tr>
-            <tr>
-                <td>출시 연도</td>
-                <td>${film.releaseYear}</td>
-            </tr>
-            <tr>
-                <td>길이</td>
-                <td>${film.length} 분</td>
-            </tr>
-            <tr>
-                <td>상영등급</td>
-                <td>${film.rating}</td>
-            </tr>
-            <tr>
-                <td>언어</td>
-                <td>${film.language}</td>
-            </tr>
-            <tr>
-                <td>대여비</td>
-                <td>${film.rentalRate} 달러</td>
-            </tr>
-            <tr>
-                <td>대여기간</td>
-                <td>${film.rentalDuration} 일</td>
-            </tr>
-            <tr>
-                <td>특별 기능</td>
-                <td>${film.specialFeatures}</td>
-            </tr>
-            <tr>
-                <td>마지막 수정일</td>
-                <td>${film.lastUpdate}</td>
-            </tr>
-            <tr>
-                <td>대체비용</td>
-                <td>${film.replacementCost} 달러</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+		<!-- ● 
+			● 1) film 상세
+			● 1-1) film 수정 - /on/modifyFilm
+			● 1-2) film 삭제 - /on/removeFilm 
+			(inventory 렌탈정보확인 + film_category삭제 + film_actor삭제 + film삭제)
 			
+			● 2) film_category 리스트
+			2-1) film_category 추가 /on/addFilmCategory -> 카테고리 전체 목록에서 선택
+			2-2) film_category 삭제 /on/removeFilmCategory
+						
+			● 3) film_actor 리스트
+			3-1) film_actor 추가 /on/addActorByFilm -> 액터 "검색" 후 선택
+			3-2) film_actor 삭제 /on/removeFileActor
+			
+			4) invetory 정보
+
+		 -->
+		<div class="col-sm-10">
+			<!-- main content -->
+			<h1>FILM ONE</h1>
+			<div>
+				<!-- 필름 하나의 상세 정보 -->
+				${film}
+			</div>
+			<div>
+				<a href="${pageContext.request.contextPath}/on/modifyFilm?filmId=${film.filmId}">영화 수정</a>
+				<a href="${pageContext.request.contextPath}/on/removeFilm?filmId=${film.filmId}">영화 삭제</a>
+				<span class="text-danger">${removeFilmMsg}</span>
+			</div>
+			
+			<br>	
+			<div>
+				<h2>작품 장르(CATEGORY)</h2>
+				
+				<form method="post"><!-- 이 영화 카테고리 추가 -->
+					<select name="categoryId" id="categoryId">
+						<option value="">카테고리 선택</option>
+						<!-- model.allCategoryList -->
+						<c:forEach var="ac" items="${allCategoryList}">
+							<option value="${ac.categoryId}">${ac.name}</option>
+						</c:forEach>
+					</select>
+					<button type="button">현재필름 카테고리 추가</button>
+				</form>
+				
+				<!-- 카테고리 리스트 model.filmCategoryList -->
+				<div>
+					<c:forEach var="fc" items="${filmCategoryList}">
+						<div>
+							${fc.name}
+							&nbsp;
+							<a href="">삭제</a>
+						</div>
+					</c:forEach>
+				</div>				
+			</div>
+			
+			<br>	
 			<div>
 				<h2>작품에 출연한 배우들</h2>
 				<div>
+					<form><!-- 배우이름 검색 -->
+						<input type="text" name="searchName">
+						<button type="button">이름검색</button>
+					</form>
+				
+					<form method="post"><!-- 출연배우 추가 -->
+						<select name="actorId" id="actorId" size="5">
+							<option value="">배우 선택</option>
+							<!-- model.categoryList -->
+							
+						</select>
+						<button type="button">출연배우추가</button>
+					</form>
+				
 					<c:forEach var="a" items="${actorList}">
 						<div>
 							<a href="${pageContext.request.contextPath}/on/actorOne?actorId=${a.actorId}">
 								${a.firstName} ${a.lastName}
 							</a>
+							&nbsp;
+							<a href="">삭제</a>
 						</div>
 					</c:forEach>
 					

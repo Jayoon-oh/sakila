@@ -28,12 +28,12 @@
                 <strong>지점 관리</strong>
             </li>
             <li class="list-group-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="${pageContext.request.contextPath}/on/storeList" class="btn">
                     <i class="bi bi-list-ul"></i> 지점 리스트
                 </a>
             </li>
             <li class="list-group-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="${pageContext.request.contextPath}/on/addStore">
                     <i class="bi bi-plus-circle"></i> 지점 추가
                 </a>
             </li>
@@ -54,7 +54,7 @@
                 <strong>영화 관리</strong>
             </li>
             <li class="list-group-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="${pageContext.request.contextPath}/on/filmList" class="btn">
                     <i class="bi bi-camera"></i> 영화 리스트
                 </a>
             </li>
