@@ -51,15 +51,18 @@
 			<div>
 				<h2>작품 장르(CATEGORY)</h2>
 				
-				<form method="post"><!-- 이 영화 카테고리 추가 -->
+				<form id="formFileCategory"action="${pageContext.request.servletContext}/on/addFileCategory"
+					method="post"><!-- 이 영화 카테고리 추가 -->
+					<input type="hidden" name="filmId" value="{film.filmId}">
 					<select name="categoryId" id="categoryId">
-						<option value="">카테고리 선택</option>
+						<option value="formFileCategory">카테고리 선택</option>
 						<!-- model.allCategoryList -->
 						<c:forEach var="ac" items="${allCategoryList}">
 							<option value="${ac.categoryId}">${ac.name}</option>
 						</c:forEach>
 					</select>
-					<button type="button">현재필름 카테고리 추가</button>
+					<button id="btnFileCategory" type="button">현재필름 카테고리 추가</button>
+
 				</form>
 				
 				<!-- 카테고리 리스트 model.filmCategoryList -->
@@ -78,15 +81,24 @@
 			<div>
 				<h2>작품에 출연한 배우들</h2>
 				<div>
-					<form><!-- 배우이름 검색 -->
-						<input type="text" name="searchName">
-						<button type="button">이름검색</button>
-					</form>
+				<form id="formSearchName" 
+						action="${pageContext.request.contextPath}/on/filmOne" 
+						method="get"><!-- 배우이름 검색 -->
+						
+						<input type="hidden" name="filmId" value="${film.filmId}">
+						
+						<input type="text" name="searchName" id="searchName">
+						<button id="btnSearchName" type="button">이름검색</button>
+				</form>
 				
 					<form method="post"><!-- 출연배우 추가 -->
 						<select name="actorId" id="actorId" size="5">
 							<option value="">배우 선택</option>
-							<!-- model.categoryList -->
+							<!-- model.searchActorList -->
+							<c:forEach var="sa" items="${searchActorList}">
+								<option value="${sa.actorId}">${sa.firstName} ${sa.lastName}</option>
+							</c:forEach>
+
 							
 						</select>
 						<button type="button">출연배우추가</button>
@@ -98,7 +110,7 @@
 								${a.firstName} ${a.lastName}
 							</a>
 							&nbsp;
-							<a href="">삭제</a>
+							<a href="${pageContext.request.contextPath}/on/removeFilmCategory?filmId=${fc.filmId}&categoryId=${fc.categoryId}">삭제</a>
 						</div>
 					</c:forEach>
 					
@@ -107,4 +119,22 @@
 		</div>
 	</div>
 </body>
+<script>
+		$('#btnSearchName').click(function() {
+			if($('#searchName').val() == '') {
+				alert('검색이름을 입력하세요');
+			} else {
+				$('#formSearchName').submit();
+			}
+		})
+	
+		$('#btnFileCategory').click(function() {
+			if($('#categoryId').val() == '') {
+				alert('categoryId를 선택하세요');
+			} else {
+				$('#formFileCategory').submit();
+			}
+		})
+</script>
 </html>
+

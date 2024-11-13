@@ -10,6 +10,9 @@ import com.example.sakila.vo.ActorFile;
 
 @Mapper
 public interface ActorMapper {
+	// /on/filmOne : searchName검색결과
+	List<Actor> selectActorListByActor(String searchName);
+		
 	int deleteActor(int actorId);
 	
 	int updateActor(Actor actor);
