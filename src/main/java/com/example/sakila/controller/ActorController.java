@@ -16,6 +16,7 @@ import com.example.sakila.service.FilmService;
 import com.example.sakila.vo.Actor;
 import com.example.sakila.vo.ActorFile;
 import com.example.sakila.vo.ActorForm;
+import com.example.sakila.vo.Customer;
 import com.example.sakila.vo.Film;
 
 import jakarta.servlet.http.HttpSession;
@@ -28,6 +29,7 @@ public class ActorController {
 	@Autowired ActorFileService actorFileService;
 	@Autowired FilmService filmService;
 	
+
 	@GetMapping("/on/removeActor") // httpsession 경로 받아옴.
 	public String removeActor(HttpSession session, @RequestParam int actorId) {
 		String path = session.getServletContext().getRealPath("/upload/");
