@@ -103,39 +103,39 @@
 					<tr>
 						<td>addressId</td>
 						<td>
-							<input type="text" name="addressId" id="addressId" readonly>
+							<input type="text" name="addressId">
 						</td>
 					</tr>
 					
 					<tr>
 						<td>firstName</td>
 						<td>
-							<input type="text" name="firstName" id="firstName">
+							<input type="text" name="firstName">
 						</td>
 					</tr>
 					
 					<tr>
 						<td>lastName</td>
 						<td>
-							<input type="text" name="lastName" id="lastName">
+							<input type="text" name="lastName">
 						</td>
 					</tr>
 					
 					<tr>
 						<td>email</td>
 						<td>
-							<input type="text" name="email" id="email">
+							<input type="text" name="email">
 						</td>
 					</tr>
 					
 					<tr>
 						<td>userName</td>
 						<td>
-							<input type="text" name="username" id="username">
+							<input type="text" name="username">
 						</td>
 					</tr>
 				</table>
-				<button type="button" class="btn btn-primary active" id="btnAddStaff" type="button">스텝 추가</button>
+				<button type="button" class="btn btn-primary active" type="button">스텝 추가</button>
 			</form>
 		</div>
 	</div>

@@ -25,14 +25,14 @@
                 </a>
             </li>
             <li class="list-group-item bg-light">
-                <strong>지점 관리</strong>
+                <strong>지점&인벤토리 관리</strong>
             </li>
             <li class="list-group-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/on/storeList" class="btn">
                     <i class="bi bi-list-ul"></i> 지점 리스트
                 </a>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item"> <!-- 구현안됨 -->
                 <a class="nav-link" href="${pageContext.request.contextPath}/on/addStore">
                     <i class="bi bi-plus-circle"></i> 지점 추가
                 </a>
@@ -55,29 +55,52 @@
             </li>
             <li class="list-group-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/on/filmList" class="btn">
-                    <i class="bi bi-camera"></i> 영화 리스트
+                    <i class="bi bi-camera"></i> 카테고리 리스트
+                </a>
+            </li>
+            <li class="list-group-item"> <!-- 구현 안됨. -->
+                <a class="nav-link" href="${pageContext.request.contextPath}/on/addCategory" class="btn">
+                    <i class="bi bi-camera"></i> 카테고리 추가
+                </a>
+            </li>
+            <li class="list-group-item"> <!-- 구현 안됨 -->
+                <a class="nav-link" href="${pageContext.request.contextPath}/on/languageList" class="btn">
+                    <i class="bi bi-camera"></i> 언어 리스트
+                </a>
+            </li>
+            <li class="list-group-item"> <!-- 구현 안됨 -->
+                <a class="nav-link" href="${pageContext.request.contextPath}/on/addLanguage" class="btn">
+                    <i class="bi bi-camera"></i> 언어 추가
                 </a>
             </li>
             <li class="list-group-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/on/addFilm">
-                    <i class="bi bi-film"></i> 영화 추가
+                <a class="nav-link" href="${pageContext.request.contextPath}/on/filmList" class="btn">
+                    <i class="bi bi-camera"></i> 필름 리스트
                 </a>
+            </li>
+            <li class="list-group-item">
+               <a class="nav-link" href="${pageContext.request.contextPath}/on/addFilm" class="btn">
+                    <i class="bi bi-camera"></i> 필름 추가
+                </a>
+            </li>
+     
             <li class="list-group-item bg-light">
                 <strong>고객 관리</strong>
             </li>
             <li class="list-group-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/on/actorList">
+                <a class="nav-link" href="${pageContext.request.contextPath}/on/customerList">
                     <i class="bi bi-person-lines-fill"></i> 고객 리스트
                 </a>
             </li>
             <li class="list-group-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/on/addActor">
+                <a class="nav-link" href="${pageContext.request.contextPath}/on/addCustomer">
                     <i class="bi bi-person-plus-fill"></i> 고객 추가
                 </a>
             </li>
             <li class="list-group-item bg-light">
                 <strong>배우 관리</strong>
             </li>
+            
             <li class="list-group-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/on/actorList">
                     <i class="bi bi-person-fill"></i> 배우 리스트

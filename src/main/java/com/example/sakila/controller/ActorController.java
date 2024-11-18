@@ -44,6 +44,7 @@ public class ActorController {
 		
 		return "redirect:/on/actorOne?actorId="+actor.getActorId();
 	}
+	
 	@GetMapping("/on/modifyActor")
 	public String modifyActor(Model model, @RequestParam int actorId) {
 		Actor actor = actorService.getActorOne(actorId);

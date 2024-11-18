@@ -23,7 +23,7 @@
 			<h1>ADD ACTOR</h1>
 			<form id="formActor" method="post" action="${pageContext.request.contextPath}/on/addActor"
 				enctype="multipart/form-data">
-				<table class="table">
+				<table class="table table-striped">
 					<tr>
 						<td>firstName</td>
 						<td><input type="text" name="firstName"></td>
@@ -36,13 +36,13 @@
 						<td>file</td>
 						<td>
 							<div id="fileDiv">
-								<button type="button" id="btnAddFile">파일폼 추가</button>
-								<button type="button" id="btnRemoveFile">파일폼 삭제</button>
+								<button type="button" id="btnAddFile" class="btn btn-primary">파일폼 추가</button>
+								<button type="button" id="btnRemoveFile" class="btn btn-danger">파일폼 삭제</button>
 							</div>
 						</td>
 					</tr>
 				</table>
-				<button type="button" id="btnAddActor">배우 추가</button>
+				<button type="button" id="btnAddActor" class="btn btn-primary">배우 추가</button>
 			</form>
 		</div>
 	</div>

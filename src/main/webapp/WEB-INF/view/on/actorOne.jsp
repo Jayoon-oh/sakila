@@ -38,7 +38,7 @@
 			<h1>ACTOR ONE</h1>
 			<!-- ACTOR -->
 			<h2>&#128526; ACTOR</h2>
-			<table class="table table-striped table-hover">
+			<table class="table">
 				<tr>
 					<td>actorId</td>
 					<td>${actor.actorId}</td>
@@ -57,14 +57,15 @@
 				</tr>
 			</table>
 			<div>
-			    <a class="btn btn-primary" href="${pageContext.request.contextPath}/on/modifyActor?actorId=${actor.actorId}">
-			        actor 수정
-			    </a>
-			    &nbsp;
-			    <a class="btn btn-danger" href="${pageContext.request.contextPath}/on/removeActor?actorId=${actor.actorId}">
-			        actor 삭제
-			    </a>
+				<a href="${pageContext.request.contextPath}/on/modifyActor?actorId=${actor.actorId}">
+					actor 수정
+				</a>
+				&nbsp;
+				<a href="${pageContext.request.contextPath}/on/removeActor?actorId=${actor.actorId}">
+					actor 삭제
+				</a>
 			</div>
+			
 			<br>
 			<!-- ACTOR FILE -->
 			<h2>&#128526; ACTOR FILE</h2>
@@ -115,7 +116,7 @@
 					</form>
 					
 					<form id="formAddFilm" method="post"
-						action="${pageContext.request.contextPath}/on/addFilmByActor">
+						action="${pageContext.request.contextPath}/on/addFilmActorByActor">
 						<input type="hidden" name="actorId" value="${actor.actorId}">
 						<select size="5" name="filmId">
 							<c:forEach var="sf" items="${searchFilmList}">
@@ -128,17 +129,17 @@
 				
 				<br>
 				
-				<!-- 영화 리스트 -->
 				<c:forEach var="f" items="${filmList}">
+					<div>
 						<a href="${pageContext.request.contextPath}/on/filmOne?filmId=${f.filmId}"
 							 class="btn btn-info">
 							${f.title}
 						</a>
 						&nbsp;
-						<a href="${pageContext.request.contextPath}/on/removeFilmActor?filmId=${f.filmId}&actorId=${actor.actorId}" 
+						<a href="${pageContext.request.contextPath}/on/removeFilmActorByActor?filmId=${f.filmId}&actorId=${actor.actorId}" 
 							class="btn btn-danger">flim_actor에서 삭제</a>
-						</div>
-						</div>
+						<!-- 삭제시 f.filmId & actor.actorId 필요 -->
+					</div>
 				</c:forEach>
 			</div>
 		</div>

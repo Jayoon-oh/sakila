@@ -14,7 +14,7 @@ import com.example.sakila.vo.Address;
 public class AddressService {
 	@Autowired AddressMapper addressMapper;
 	
-	public List<Address> getAddresssListByWord(String searchAddress) {
+	public List<Address> getAddressListByWord(String searchAddress) {
 		return addressMapper.selectAddressListByWord(searchAddress);
 	}
 }

@@ -57,7 +57,7 @@ public class StaffController {
 		
 		// model(addressList) <- serachAddress가 공백이 아니면 검색 후 
 		if(searchAddress.equals("") == false) {
-			List<Address> addressList = addressSerivce.getAddresssListByWord(searchAddress);
+			List<Address> addressList = addressSerivce.getAddressListByWord(searchAddress);
 			log.debug(addressList.toString());
 			model.addAttribute("addressList",addressList);
 		}

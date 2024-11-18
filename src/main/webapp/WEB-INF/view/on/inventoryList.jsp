@@ -21,19 +21,34 @@
 		<div class="col-sm-10">
 			<!-- main content -->
 			<h1>${storeId}지점 INVENTORY LIST</h1>
+			
+			<div>
+				<a href="${pageContext.request.contextPath}/on/addInventory?storeId=${storeId}">
+					인벤토리 추가
+				</a>
+			</div>
+			
 			<table class="table">
 				<tr>
 					<td>inventoryId</td>
-					<td>filmId</td>
-					<td>title</td>
+					<td>(filmId)title</td>
 					<td>lastUpdate</td>
+					<td>삭제</td>
 				</tr>
 				<c:forEach var="iv" items="${inventoryList}">
 					<tr>
 						<td>${iv.inventoryId}</td>
-						<td>${iv.filmId}</td>
-						<td>${iv.title}</td>
+						<td>
+							<a href="${pageContext.request.contextPath}/on/filmOne?filmId=${iv.filmId}">
+								(${iv.filmId}) ${iv.title}
+							</a>
+						</td>
 						<td>${iv.lastUpdate}</td>
+						<td>
+							<a href="${pageContext.request.contextPath}/on/removeInventoryByKey?inventoryId=${iv.inventoryId}&storeId=${storeId}">
+								삭제
+							</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>
