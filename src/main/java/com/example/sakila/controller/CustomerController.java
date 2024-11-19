@@ -27,8 +27,9 @@ public class CustomerController {
 	@Autowired AddressService addressService;
 	
 	@GetMapping("/on/customerOne")
-	public String customerOne(Model model
-			// 수정 필요.
+	public String customerOne(@RequestParam Integer customerId) {
+		// 
+		return "on/customerOne";
 	}
 	
 	@GetMapping("/on/customerList")
@@ -36,6 +37,8 @@ public class CustomerController {
 							, @RequestParam(defaultValue = "1") Integer currentPage
 							, @RequestParam(defaultValue = "10") Integer rowPerPage) {
 		Map<String, Object> resultMap = customerService.getCustomerList(currentPage, rowPerPage);
+		
+		log.debug(resultMap.toString());
 		
 		model.addAttribute("currentPage", currentPage);
 		// resultMap 풀어서.... 이동(통으로 넘기면 View코드 복잡...)

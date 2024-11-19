@@ -19,6 +19,10 @@ import lombok.extern.slf4j.Slf4j;
 public class CustomerService {
 	@Autowired CustomerMapper customerMapper;
 	
+	public List<Customer> getCustomerListByName(String searchName) {
+		return customerMapper.selectCustomerListByName(searchName);
+	}
+	
 	public Integer getLastPage(Integer rowPerPage) {
 		return 0;
 	}
@@ -36,8 +40,9 @@ public class CustomerService {
 		Integer startPagingNum = (currentPage-1)/10*10+1; 
 		// 페이징 마지막 페이지 넘버
 		Integer endPagingNum = startPagingNum + (numPerPage - 1); 
-		// 현재페이지가 95다 91~100출력인데 마지막 페이지가 98이면 91 ~ 98
 		
+		
+		// 현재페이지가 95다 91~100출력인데 마지막 페이지가 98이면 91 ~ 98
 		/*
 		Integer lastPage = this.getLastPage(rowPerPage);
 		if(lastPage < endPagingNum) {
